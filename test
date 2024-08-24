@@ -1,0 +1,43 @@
+# Retail Analytics Dagster Pipeline
+
+## Overview
+
+This project is a data pipeline built using Dagster, Pandas, SQLAlchemy, and SQLite. The primary goal of this pipeline is to process and analyze retail data, extract valuable insights, and store the results in an SQLite database for further analysis and reporting.
+
+## Data Source
+
+The source data for this project is from the [Kaggle eCommerce Dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset). The dataset includes the following key components:
+
+- **Events Data**: Captures user interactions with the eCommerce platform, such as views, adds to cart, and purchases.
+- **Item Properties Data**: Describes the properties of items over time, such as price changes and availability.
+
+## Pipeline Structure
+
+### 1. **Data Loading**:
+
+- `load_events_data`: This asset loads the events data from a CSV file, converts the timestamp to a datetime object, and prepares it for further processing.
+- `load_item_properties_data`: This asset loads item properties from two CSV files, concatenates them, and processes the timestamp. It simplifies the properties by using the last value observed for each item.
+
+### 2. **Data Transformation and Joining**:
+
+- `transform_and_join_data`: This function merges the events and item properties data on the `itemid` field. It adds features such as the time since the last event, hour of the day, and whether a view event leads to a purchase event.
+
+### 3. **Data Aggregations**:
+
+- `event_type_analysis`: This operation performs an analysis of event types (e.g., view, purchase) by hour, providing insights into the distribution of user interactions throughout the day.
+- `hourly_trend_analysis`: This operation calculates hourly trends by analyzing the number of events and computing rolling averages to understand variations in user activity.
+
+### 4. **Materialization**:
+
+- `materialize_data`: This function stores the processed data into the SQLite database. Each output dataset is saved as a separate table for easy querying and further analysis.
+
+### 5. **Logging and Error Handling**:
+
+Logging and exception handling have been added to all functions to capture errors and aid in debugging. This is particularly useful for identifying issues during execution and ensuring that the pipeline runs smoothly.
+
+## Running the Pipeline
+
+To run the Dagster pipeline, use the following command:
+
+```bash
+dagster job execute -f dagster_pipeline.py
