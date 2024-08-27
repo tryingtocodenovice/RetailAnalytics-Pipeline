@@ -24,7 +24,8 @@ The goal of this project is to analyze customer interactions on an e-commerce we
 
 ## Data Source
 
-The primary dataset used in this project is sourced from the [Retail Rocket dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset), which contains anonymized interaction data from an e-commerce website. The dataset includes information on events like views, cart additions, and purchases, as well as item properties such as category and price.
+The primary dataset used in this project is sourced from the [Retail Rocket dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset), which contains anonymized interaction data from an e-commerce website. The dataset includes information on events like views, cart additions, and purchases, as well as item properties such as category and price. 
+Download the data source from this above link and store in data folder.
 
 ## Pipeline Overview
 
