@@ -130,7 +130,7 @@ After running the pipeline, you can verify the results by inspecting the SQLite 
 2.  **Run the Verification Script**:
 
    
-    `python verify_results.py`
+    `python3 verify_table.py`
 
 ## Notes and Future Enhancement
 
